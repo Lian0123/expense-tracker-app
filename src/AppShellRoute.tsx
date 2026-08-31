@@ -7,6 +7,7 @@ import { useLedger } from './hooks/useLedger';
 import { getTimeScene } from './lib/scenes';
 import { t } from './lib/i18n';
 import type { MascotEvent, TimeScene } from './types/domain';
+import { LoadingScreen } from './components/LoadingScreen';
 
 export default function AppShellRoute() {
   const ledger = useLedger();
@@ -41,13 +42,7 @@ export default function AppShellRoute() {
     setEvent(next);
     window.setTimeout(() => setEvent('idle'), 5200);
   }, []);
-  if (ledger.loading)
-    return (
-      <div className="loading-screen">
-        <span className="loading-mark">✿</span>
-        <p>Preparing your little ledger…</p>
-      </div>
-    );
+  if (ledger.loading) return <LoadingScreen locale={ledger.settings.locale} />;
   const locale = ledger.settings.locale;
   const saveSettings = (settings: typeof ledger.settings) => {
     void ledger.updateSettings(settings);
@@ -132,6 +127,7 @@ export default function AppShellRoute() {
               await ledger.removeCategory(id);
             }}
             onEvent={onEvent}
+            onSettings={saveSettings}
           />
         )}
       </AppShell>

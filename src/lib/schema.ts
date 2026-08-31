@@ -1,4 +1,10 @@
-import type { BackupEnvelopeV1, CategoryV1, TransactionV1, UserSettingsV1 } from '../types/domain';
+import type {
+  BackupEnvelopeV1,
+  CategoryV1,
+  SortMode,
+  TransactionV1,
+  UserSettingsV1,
+} from '../types/domain';
 import { normalizeAmount } from './amount';
 
 const id = /^[a-zA-Z0-9_-]{2,80}$/;
@@ -80,7 +86,21 @@ export function validateSettings(value: unknown): UserSettingsV1 {
   const mascotPosition = item.mascotPosition ?? 'bottom-right';
   if (!['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(mascotPosition))
     throw new Error('Invalid mascot position');
-  return { ...item, currency: item.currency.toUpperCase(), mascotPosition } as UserSettingsV1;
+  const sortMode = item.sortMode;
+  if (
+    sortMode !== undefined &&
+    !['newest', 'oldest', 'amount-high', 'amount-low', 'updated'].includes(sortMode)
+  )
+    throw new Error('Invalid sort mode');
+  const normalized: UserSettingsV1 = {
+    ...item,
+    currency: item.currency.toUpperCase(),
+    mascotPosition,
+  } as UserSettingsV1;
+  // Keep legacy settings payloads byte-for-byte compatible while exposing a
+  // sensible default to the UI through the nullish fallback.
+  if (sortMode !== undefined) normalized.sortMode = sortMode as SortMode;
+  return normalized;
 }
 
 export function validateBackup(value: unknown): BackupEnvelopeV1 {

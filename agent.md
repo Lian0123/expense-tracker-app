@@ -10,6 +10,7 @@ This file is the short operational handoff for future maintenance agents. The lo
 - GitHub Pages Actions serves the artifact at `/<repository>/`; a committed `dist/` preview is also supported with relative HTML and runtime base detection.
 - Transactions retain local `HH:mm:ss` precision. Amounts are decimal strings and all calculations go through `src/lib/amount.ts`.
 - `UserSettingsV1.mascotPosition` controls the mobile Hana anchor (`top-left`, `top-right`, `bottom-left`, `bottom-right`); old settings migrate to `bottom-right`.
+- `UserSettingsV1.sortMode` remembers the user's ledger ordering; legacy settings without it use `newest` until the next sort change.
 - `src/lib/weekly.ts` derives a seven-day, selected-currency spending summary for the companion dashboard.
 
 ## Visual and interaction rules

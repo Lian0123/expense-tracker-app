@@ -48,6 +48,7 @@ interface Props {
       | 'warning',
   ) => void;
   settings: UserSettingsV1;
+  onSettings?: (settings: UserSettingsV1) => Promise<void> | void;
 }
 function download(content: string, filename: string, type: string): void {
   const blob = new Blob([content], { type });
@@ -71,10 +72,11 @@ export function LedgerView({
   onCategoryDelete,
   onEvent,
   settings,
+  onSettings,
 }: Props) {
   const [query, setQuery] = useState('');
   const [type, setType] = useState<'all' | 'income' | 'expense'>('all');
-  const [sort, setSort] = useState<SortMode>('newest');
+  const [sort, setSort] = useState<SortMode>(settings.sortMode ?? 'newest');
   const [currencyFilter, setCurrencyFilter] = useState(currency);
   const [dateRange, setDateRange] = useState<DateTimeRange>({ from: '', to: '' });
   const [editing, setEditing] = useState<TransactionV1 | undefined>();
@@ -235,7 +237,11 @@ export function LedgerView({
         <select
           className="toolbar-select"
           value={sort}
-          onChange={(event) => setSort(event.target.value as SortMode)}
+          onChange={(event) => {
+            const next = event.target.value as SortMode;
+            setSort(next);
+            if (onSettings) void onSettings({ ...settings, sortMode: next });
+          }}
           aria-label={t(locale, 'sortNewest')}
         >
           <option value="newest">{t(locale, 'sortNewest')}</option>
@@ -421,6 +427,7 @@ export function LedgerView({
               </div>
               <button
                 className="icon-button"
+                type="button"
                 onClick={() => setImportPreview(null)}
                 aria-label={t(locale, 'close')}
               >
@@ -444,17 +451,23 @@ export function LedgerView({
             )}
             <p className="muted">{t(locale, 'duplicateHint')}</p>
             <div className="form-actions">
-              <button className="button button--quiet" onClick={() => setImportPreview(null)}>
+              <button
+                className="button button--quiet"
+                type="button"
+                onClick={() => setImportPreview(null)}
+              >
                 {t(locale, 'skip')}
               </button>
               <button
                 className="button button--quiet"
+                type="button"
                 onClick={() => void completeImport('replace')}
               >
                 {t(locale, 'replace')}
               </button>
               <button
                 className="button button--primary"
+                type="button"
                 onClick={() => void completeImport('merge')}
               >
                 {t(locale, 'merge')}

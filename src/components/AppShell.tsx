@@ -52,6 +52,9 @@ export function AppShell({
     };
   }, []);
   useEffect(() => {
+    document.documentElement.lang = locale === 'zh-TW' ? 'zh-Hant' : 'en';
+  }, [locale]);
+  useEffect(() => {
     const timer = window.setInterval(() => setClock(new Date()), 1000);
     const refresh = () => setClock(new Date());
     document.addEventListener('visibilitychange', refresh);
@@ -135,6 +138,8 @@ export function AppShell({
           <span className="local-badge">● {t(locale, 'savedLocally')}</span>
           <button
             className="settings-trigger"
+            type="button"
+            aria-label={t(locale, 'switchLanguage')}
             onClick={() => onSettings({ ...settings, locale: locale === 'zh-TW' ? 'en' : 'zh-TW' })}
           >
             文 / EN
@@ -183,12 +188,14 @@ export function AppShell({
               <span>{t(locale, 'reducedMotion')}</span>
             </label>
             {installPrompt && (
-              <button className="install-trigger" onClick={() => void installApp()}>
+              <button className="install-trigger" type="button" onClick={() => void installApp()}>
                 ＋ {t(locale, 'install')}
               </button>
             )}
             <button
               className="topbar-language"
+              type="button"
+              aria-label={t(locale, 'switchLanguage')}
               onClick={() =>
                 onSettings({ ...settings, locale: locale === 'zh-TW' ? 'en' : 'zh-TW' })
               }
@@ -197,6 +204,7 @@ export function AppShell({
             </button>
             <button
               className="avatar-button"
+              type="button"
               onClick={() => onSettings({ ...settings, reducedMotion: !settings.reducedMotion })}
               aria-label={t(locale, 'reducedMotion')}
             >

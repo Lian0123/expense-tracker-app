@@ -27,7 +27,12 @@ export function LandingPage({ locale, onLocale }: Props) {
           <span>{t(locale, 'appName')}</span>
         </a>
         <div>
-          <button className="language-toggle" onClick={() => onLocale(isZh ? 'en' : 'zh-TW')}>
+          <button
+            className="language-toggle"
+            type="button"
+            aria-label={t(locale, 'switchLanguage')}
+            onClick={() => onLocale(isZh ? 'en' : 'zh-TW')}
+          >
             {isZh ? 'EN' : '繁中'}
           </button>
           <a

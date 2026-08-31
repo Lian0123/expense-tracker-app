@@ -48,6 +48,8 @@ export interface UserSettingsV1 {
   reducedMotion: boolean;
   /** Mobile companion anchor; desktop keeps the companion in the side rail. */
   mascotPosition: MascotPosition;
+  /** Preferred ledger ordering, persisted locally so backfilled entries stay easy to find. */
+  sortMode?: SortMode;
 }
 
 export interface BackupEnvelopeV1 {

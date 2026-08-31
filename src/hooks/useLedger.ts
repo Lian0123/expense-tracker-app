@@ -28,6 +28,7 @@ export function useLedger() {
       sceneOverride: 'auto',
       reducedMotion: false,
       mascotPosition: 'bottom-right',
+      sortMode: 'newest',
     },
   });
   const [loading, setLoading] = useState(true);

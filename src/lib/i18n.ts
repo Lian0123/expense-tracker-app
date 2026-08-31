@@ -30,6 +30,7 @@ export const text = {
     export: '匯出',
     settings: '設定',
     language: '語言',
+    switchLanguage: '切換語言',
     scene: '場景',
     automatic: '跟隨時間',
     exportJson: 'JSON 備份',
@@ -142,6 +143,8 @@ export const text = {
     cornerBottomLeft: '左下角',
     cornerBottomRight: '右下角',
     moveMascot: '移動花水木',
+    loading: '正在整理你的記帳本…',
+    loadingHint: '花水木正在準備今天的紙張',
   },
   en: {
     appName: 'Daily Ledger',
@@ -173,6 +176,7 @@ export const text = {
     export: 'Export',
     settings: 'Settings',
     language: 'Language',
+    switchLanguage: 'Switch language',
     scene: 'Scene',
     automatic: 'Follow time',
     exportJson: 'JSON backup',
@@ -285,6 +289,8 @@ export const text = {
     cornerBottomLeft: 'Bottom left',
     cornerBottomRight: 'Bottom right',
     moveMascot: 'Move Hana',
+    loading: 'Getting your ledger ready…',
+    loadingHint: 'Hana is preparing a fresh page for today.',
   },
 } as const;
 

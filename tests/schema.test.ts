@@ -66,6 +66,12 @@ describe('strict schema dates and boundaries', () => {
     expect(validateSettings({ ...settings, mascotPosition: undefined })).toMatchObject({
       mascotPosition: 'bottom-right',
     });
+    expect(validateSettings({ ...settings, sortMode: 'updated' })).toMatchObject({
+      sortMode: 'updated',
+    });
+    expect(() => validateSettings({ ...settings, sortMode: 'random' })).toThrow(
+      'Invalid sort mode',
+    );
     expect(() =>
       validateSettings({
         locale: 'en',

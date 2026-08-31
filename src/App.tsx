@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { LandingPage } from './components/LandingPage';
+import { LoadingScreen } from './components/LoadingScreen';
 import { SceneBackdrop } from './components/SceneBackdrop';
 import { getTimeScene } from './lib/scenes';
 import type { Locale, TimeScene } from './types/domain';
@@ -15,18 +16,12 @@ function preferredLocale(): Locale {
   return navigator.language.toLowerCase().startsWith('zh') ? 'zh-TW' : 'en';
 }
 
-function LoadingScreen() {
-  return (
-    <div className="loading-screen">
-      <span className="loading-mark">✿</span>
-      <p>Preparing your little ledger…</p>
-    </div>
-  );
-}
-
 export default function App() {
   const [scene, setScene] = useState<TimeScene>(getTimeScene());
   const [landingLocale, setLandingLocale] = useState<Locale>(preferredLocale());
+  useEffect(() => {
+    document.documentElement.lang = landingLocale === 'zh-TW' ? 'zh-Hant' : 'en';
+  }, [landingLocale]);
   useEffect(() => {
     const tick = () => setScene(getTimeScene());
     const timer = window.setInterval(tick, 60_000);
