@@ -1,0 +1,59 @@
+{
+  "name": "daily-ledger",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A calm, private and offline-first personal ledger.",
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run seo:generate -- --production && tsc -b && vite build && node scripts/finalize-pages.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand",
+    "test:e2e": "playwright test",
+    "lighthouse": "lhci autorun --config=lighthouserc.cjs && node scripts/validate-lighthouse.mjs",
+    "seo:generate": "node scripts/generate-seo.mjs",
+    "seo:validate": "node scripts/validate-seo.mjs",
+    "docs:validate": "node scripts/validate-docs.mjs",
+    "assets:optimize": "node scripts/optimize-assets.mjs",
+    "quality": "npm run lint && npm run format:check && npm run typecheck && npm run test:coverage && npm run docs:validate && npm run seo:generate && npm run build && npm run seo:validate && npm run test:e2e && npm run lighthouse",
+    "quality:full": "npm run quality"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "@lhci/cli": "^0.15.1",
+    "@playwright/test": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@testing-library/user-event": "latest",
+    "@types/jest": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-react-hooks": "latest",
+    "fake-indexeddb": "latest",
+    "globals": "latest",
+    "jest": "latest",
+    "jest-environment-jsdom": "latest",
+    "prettier": "latest",
+    "sharp": "^0.35.4",
+    "ts-jest": "latest",
+    "typescript-eslint": "latest"
+  }
+}

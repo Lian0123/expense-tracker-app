@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /expense-tracker-app/app/
+Sitemap: https://lian0123.github.io/expense-tracker-app/sitemap.xml

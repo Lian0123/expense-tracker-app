@@ -1,0 +1,7 @@
+# Data contract (schema version 1)
+
+`TransactionV1` uses a stable id, `income|expense`, positive decimal string amount, ISO 4217 currency, category id, ISO date, local wall-clock `time` in `HH:mm:ss`, note, tags, and ISO timestamps. Time is deliberately stored without timezone conversion so a receipt remains at the second the user entered. Old schema-1 records without `time` are read as `00:00:00`; new writes always include it. `CategoryV1` carries bilingual names, icon, tone, type and an optional `custom` marker. `UserSettingsV1` carries locale, default currency, automatic/manual time scene, reduced motion, and the mobile `mascotPosition` (`top-left`, `top-right`, `bottom-left`, or `bottom-right`). Older settings are migrated to `bottom-right` during validation.
+
+JSON backups are `daily-ledger-backup` envelopes with `schemaVersion`, `appVersion`, export timestamp, transactions, categories and settings. `validateBackup()` must reject unknown/corrupt shapes before a write. Merge retains the newest `updatedAt` for an id; replace is a single IndexedDB transaction behind a confirmation. CSV has stable English headers (including `time`), UTF-8 BOM, RFC 4180 quoting and pipe-separated tags; legacy date-only CSV is accepted at midnight. Currencies are never exchange-rate converted.
+
+When evolving this contract, add a migration rather than silently changing the meaning of an existing field, add round-trip tests, and document the new version here.

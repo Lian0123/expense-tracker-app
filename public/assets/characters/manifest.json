@@ -1,0 +1,25 @@
+{
+  "character": "hana-mizuki",
+  "formats": ["avif", "webp", "png"],
+  "states": [
+    "idle",
+    "welcome",
+    "focus",
+    "thinking",
+    "income",
+    "expense",
+    "edit",
+    "validation",
+    "empty",
+    "success",
+    "export",
+    "warning"
+  ],
+  "pathTemplate": "/assets/characters/hana-{state}.{avif|webp|png}",
+  "assetMap": {
+    "focus": "hana-input.png",
+    "validation": "hana-error.png",
+    "success": "hana-import.png"
+  },
+  "fallback": "none"
+}

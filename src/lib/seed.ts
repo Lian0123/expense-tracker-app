@@ -1,0 +1,108 @@
+import type { CategoryV1, UserSettingsV1 } from '../types/domain';
+
+export const defaultCategories: CategoryV1[] = [
+  { id: 'food', name: { 'zh-TW': '飲食', en: 'Food' }, icon: '🍙', tone: 'coral', type: 'expense' },
+  {
+    id: 'coffee',
+    name: { 'zh-TW': '咖啡與茶', en: 'Coffee & tea' },
+    icon: '☕',
+    tone: 'yellow',
+    type: 'expense',
+  },
+  {
+    id: 'transport',
+    name: { 'zh-TW': '交通', en: 'Transport' },
+    icon: '🚌',
+    tone: 'teal',
+    type: 'expense',
+  },
+  { id: 'home', name: { 'zh-TW': '居家', en: 'Home' }, icon: '🏡', tone: 'blue', type: 'expense' },
+  {
+    id: 'shopping',
+    name: { 'zh-TW': '購物', en: 'Shopping' },
+    icon: '🛍️',
+    tone: 'pink',
+    type: 'expense',
+  },
+  {
+    id: 'subscriptions',
+    name: { 'zh-TW': '訂閱服務', en: 'Subscriptions' },
+    icon: '📺',
+    tone: 'purple',
+    type: 'expense',
+  },
+  { id: 'fun', name: { 'zh-TW': '娛樂', en: 'Fun' }, icon: '🎐', tone: 'purple', type: 'expense' },
+  {
+    id: 'health',
+    name: { 'zh-TW': '健康', en: 'Health' },
+    icon: '🌱',
+    tone: 'green',
+    type: 'expense',
+  },
+  {
+    id: 'education',
+    name: { 'zh-TW': '學習', en: 'Learning' },
+    icon: '📚',
+    tone: 'blue',
+    type: 'expense',
+  },
+  {
+    id: 'travel',
+    name: { 'zh-TW': '旅行', en: 'Travel' },
+    icon: '🗺️',
+    tone: 'teal',
+    type: 'expense',
+  },
+  {
+    id: 'pets',
+    name: { 'zh-TW': '毛孩', en: 'Pets' },
+    icon: '🐾',
+    tone: 'green',
+    type: 'expense',
+  },
+  {
+    id: 'personal-care',
+    name: { 'zh-TW': '個人照護', en: 'Personal care' },
+    icon: '🪞',
+    tone: 'pink',
+    type: 'expense',
+  },
+  {
+    id: 'salary',
+    name: { 'zh-TW': '薪資', en: 'Salary' },
+    icon: '🌞',
+    tone: 'yellow',
+    type: 'income',
+  },
+  { id: 'gift', name: { 'zh-TW': '禮物', en: 'Gift' }, icon: '🎁', tone: 'pink', type: 'income' },
+  {
+    id: 'freelance',
+    name: { 'zh-TW': '接案收入', en: 'Freelance' },
+    icon: '💼',
+    tone: 'teal',
+    type: 'income',
+  },
+  {
+    id: 'investment',
+    name: { 'zh-TW': '投資收益', en: 'Investment' },
+    icon: '🌿',
+    tone: 'green',
+    type: 'income',
+  },
+  {
+    id: 'refund',
+    name: { 'zh-TW': '退款', en: 'Refund' },
+    icon: '↩️',
+    tone: 'yellow',
+    type: 'income',
+  },
+  { id: 'other', name: { 'zh-TW': '其他', en: 'Other' }, icon: '✦', tone: 'slate', type: 'both' },
+];
+
+export const defaultSettings: UserSettingsV1 = {
+  locale: navigator.language.toLowerCase().startsWith('zh') ? 'zh-TW' : 'en',
+  currency: 'TWD',
+  sceneOverride: 'auto',
+  reducedMotion: false,
+  mascotPosition: 'bottom-right',
+};
