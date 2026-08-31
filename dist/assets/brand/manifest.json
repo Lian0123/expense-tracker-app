@@ -11,10 +11,38 @@
       "alpha": false
     },
     {
+      "file": "hana-app-icon-192.avif",
+      "width": 192,
+      "height": 192,
+      "format": "avif",
+      "alpha": false
+    },
+    {
+      "file": "hana-app-icon-192.webp",
+      "width": 192,
+      "height": 192,
+      "format": "webp",
+      "alpha": false
+    },
+    {
       "file": "hana-app-icon-512.png",
       "width": 512,
       "height": 512,
       "format": "png",
+      "alpha": false
+    },
+    {
+      "file": "hana-app-icon-512.avif",
+      "width": 512,
+      "height": 512,
+      "format": "avif",
+      "alpha": false
+    },
+    {
+      "file": "hana-app-icon-512.webp",
+      "width": 512,
+      "height": 512,
+      "format": "webp",
       "alpha": false
     }
   ]

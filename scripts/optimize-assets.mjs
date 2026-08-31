@@ -2,7 +2,12 @@ import { readdir, rename, stat } from 'node:fs/promises';
 import { extname, join } from 'node:path';
 import sharp from 'sharp';
 
-const roots = ['public/assets/characters', 'public/assets/backgrounds', 'public/assets/social'];
+const roots = [
+  'public/assets/characters',
+  'public/assets/backgrounds',
+  'public/assets/brand',
+  'public/assets/social',
+];
 
 for (const root of roots) {
   for (const name of await readdir(root)) {

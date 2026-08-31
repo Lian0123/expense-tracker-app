@@ -12,7 +12,17 @@ export function LandingPage({ locale, onLocale }: Props) {
       <nav className="landing-nav">
         <a className="brand" href={assetUrl('')}>
           <span className="brand-mark">
-            <img src={assetUrl('assets/brand/hana-app-icon-192.png')} alt="" />
+            <picture>
+              <source
+                srcSet={assetVariant('assets/brand/hana-app-icon-192.png', 'avif')}
+                type="image/avif"
+              />
+              <source
+                srcSet={assetVariant('assets/brand/hana-app-icon-192.png', 'webp')}
+                type="image/webp"
+              />
+              <img src={assetUrl('assets/brand/hana-app-icon-192.png')} alt="" />
+            </picture>
           </span>
           <span>{t(locale, 'appName')}</span>
         </a>
@@ -68,7 +78,15 @@ export function LandingPage({ locale, onLocale }: Props) {
                 srcSet={assetVariant('assets/characters/hana-welcome.png', 'webp')}
                 type="image/webp"
               />
-              <img src={assetUrl('assets/characters/hana-welcome.png')} alt="" decoding="async" />
+              <img
+                src={assetUrl('assets/characters/hana-welcome.png')}
+                alt=""
+                width="640"
+                height="960"
+                decoding="async"
+                loading="lazy"
+                fetchPriority="low"
+              />
             </picture>
           </div>
           <div className="visual-flower flower-a">✿</div>

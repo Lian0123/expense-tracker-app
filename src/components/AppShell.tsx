@@ -9,7 +9,7 @@ import type {
 import { t } from '../lib/i18n';
 import { sceneMeta } from '../lib/scenes';
 import { Mascot } from './Mascot';
-import { assetUrl } from '../lib/assets';
+import { assetUrl, assetVariant } from '../lib/assets';
 
 interface Props {
   locale: Locale;
@@ -96,7 +96,17 @@ export function AppShell({
       <aside className="app-sidebar">
         <div className="brand">
           <span className="brand-mark">
-            <img src={assetUrl('assets/brand/hana-app-icon-192.png')} alt="" />
+            <picture>
+              <source
+                srcSet={assetVariant('assets/brand/hana-app-icon-192.png', 'avif')}
+                type="image/avif"
+              />
+              <source
+                srcSet={assetVariant('assets/brand/hana-app-icon-192.png', 'webp')}
+                type="image/webp"
+              />
+              <img src={assetUrl('assets/brand/hana-app-icon-192.png')} alt="" />
+            </picture>
           </span>
           <span>{t(locale, 'appName')}</span>
           <small>DAILY LEDGER</small>

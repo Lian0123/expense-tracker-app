@@ -7,6 +7,7 @@ This file is the short operational handoff for future maintenance agents. The lo
 - React 19 + TypeScript strict + Vite; Node 24 is pinned in `.nvmrc`.
 - The app is static and local-only. IndexedDB is the source of truth; JSON/CSV are user-controlled backups.
 - `/` and `/en/` are crawlable marketing pages. `/app/?mode=companion|ledger` is the noindex application shell.
+- GitHub Pages Actions serves the artifact at `/<repository>/`; a committed `dist/` preview is also supported with relative HTML and runtime base detection.
 - Transactions retain local `HH:mm:ss` precision. Amounts are decimal strings and all calculations go through `src/lib/amount.ts`.
 - `UserSettingsV1.mascotPosition` controls the mobile Hana anchor (`top-left`, `top-right`, `bottom-left`, `bottom-right`); old settings migrate to `bottom-right`.
 - `src/lib/weekly.ts` derives a seven-day, selected-currency spending summary for the companion dashboard.

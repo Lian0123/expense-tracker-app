@@ -22,7 +22,11 @@ const CORE = [
   './app/',
   './en/',
   './manifest.webmanifest',
+  './assets/brand/hana-app-icon-192.avif',
+  './assets/brand/hana-app-icon-192.webp',
   './assets/brand/hana-app-icon-192.png',
+  './assets/brand/hana-app-icon-512.avif',
+  './assets/brand/hana-app-icon-512.webp',
   './assets/brand/hana-app-icon-512.png',
   ...CHARACTER_STATES.flatMap((state) =>
     IMAGE_FORMATS.map((format) => `./assets/characters/hana-${state}.${format}`),
