@@ -39,7 +39,7 @@ test('records, persists, sorts and creates a custom category', async ({ page }) 
   await expect(page.locator('.entry-row').first()).toContainText('較小的夏日支出');
   await expect(page.locator('.entry-row').first()).toContainText('09:08:08');
 
-  await page.getByLabel('開始時間').fill('2026-09-01T00:00');
+  await page.getByLabel('開始時間').fill('2099-01-01T00:00');
   await expect(page.locator('.empty-state')).toBeVisible();
   await page.getByRole('button', { name: '清除時間篩選' }).click();
   await expect(page.locator('.entry-row')).toHaveCount(2);

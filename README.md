@@ -21,6 +21,8 @@ JSON backups include schema and app versions and can be merged or restored. CSV 
 
 The Pages workflow runs lint, typecheck, Jest coverage, build and SEO validation before deploying. Set `SITE_URL` and (when needed) `BASE_PATH` in the workflow/repository environment. Vite derives the repository base path from `GITHUB_REPOSITORY` during Actions builds.
 
+For deployment, set GitHub Pages **Source** to **GitHub Actions**. Serving the repository root as a branch bypasses Vite and exposes raw `/src/main.tsx`; the checked-in workflow uploads the compiled `dist` artifact instead.
+
 The visual system uses a summer shrine palette, five time-aware scenes, a visible local clock on mobile, a seven-day spending chart, and twelve animated Hana states. Hana can be moved to any mobile corner and remembers that choice. AVIF/WebP are preferred at runtime, with transparent PNG fallbacks under `public/assets/characters` and scene fallbacks under `public/assets/backgrounds`. The installable PWA and favicon use Hana's character portrait as their identity.
 
 ## Quality commands

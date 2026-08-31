@@ -84,6 +84,29 @@ a {
   filter: saturate(1.2) contrast(1.08);
   pointer-events: none;
 }
+.scene::after {
+  content: '';
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: var(--scene-overlay, rgba(248, 243, 232, 0.38));
+}
+.scene--morning {
+  --scene-overlay: linear-gradient(180deg, rgba(255, 253, 247, 0.2), rgba(248, 243, 232, 0.4));
+}
+.scene--noon {
+  --scene-overlay: linear-gradient(180deg, rgba(255, 253, 247, 0.4), rgba(248, 243, 232, 0.5));
+}
+.scene--dusk {
+  --scene-overlay: linear-gradient(180deg, rgba(255, 253, 247, 0.34), rgba(248, 243, 232, 0.5));
+}
+.scene--evening {
+  --scene-overlay: linear-gradient(180deg, rgba(255, 253, 247, 0.46), rgba(248, 243, 232, 0.58));
+}
+.scene--deep-night {
+  --scene-overlay: linear-gradient(180deg, rgba(255, 253, 247, 0.52), rgba(248, 243, 232, 0.66));
+}
 .scene--morning::before,
 .scene--noon::before,
 .scene--dusk::before,
@@ -1633,7 +1656,8 @@ footer {
     min-height: 68px;
     padding: 0 20px;
     border-bottom: 1px solid var(--line);
-    background: rgba(255, 253, 247, 0.35);
+    background: rgba(255, 253, 247, 0.9);
+    backdrop-filter: blur(14px);
   }
   .mobile-timebar {
     display: grid;
@@ -1643,12 +1667,13 @@ footer {
     min-height: 56px;
     padding: 0 20px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.62);
-    color: var(--ink-soft);
+    color: rgba(255, 253, 247, 0.9);
     background: rgba(16, 42, 67, 0.72);
     box-shadow: 0 6px 18px rgba(16, 42, 67, 0.12);
     font-size: 10px;
   }
   .mobile-timebar__date {
+    color: rgba(255, 253, 247, 0.88);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

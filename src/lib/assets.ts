@@ -1,6 +1,42 @@
+/**
+ * Resolve the effective deployment root at runtime.
+ *
+ * A GitHub Pages branch preview can expose the production `dist` folder at
+ * `/<repository>/dist/`, while the normal Actions deployment serves that same
+ * folder at `/<repository>/`. Vite only knows the configured base at build
+ * time, so detect the preview path before resolving runtime images and the
+ * service worker.
+ */
+export function runtimeBaseUrl(): string {
+  const configuredBase = typeof __DAILY_LEDGER_BASE__ === 'string' ? __DAILY_LEDGER_BASE__ : '/';
+  if (typeof window === 'undefined') return configuredBase;
+  return resolveRuntimeBase(configuredBase, window.location.pathname, window.location.hostname);
+}
+
+/** Pure path resolver kept separate so deployment variants can be regression-tested. */
+export function resolveRuntimeBase(
+  configuredBase: string,
+  pathname: string,
+  hostname: string,
+): string {
+  if (configuredBase === '/') return configuredBase;
+  if (pathname.startsWith(`${configuredBase}dist/`)) {
+    return `${configuredBase}dist/`;
+  }
+  // Lighthouse's static server mounts `dist` at localhost root. Keep that
+  // quality preview usable without changing the production Pages base.
+  if (
+    (hostname === 'localhost' || hostname === '127.0.0.1') &&
+    !pathname.startsWith(configuredBase)
+  ) {
+    return '/';
+  }
+  return configuredBase;
+}
+
 /** Resolve public assets correctly in both root development and GitHub Pages subpaths. */
 export function assetUrl(path: string): string {
-  const base = typeof __DAILY_LEDGER_BASE__ === 'string' ? __DAILY_LEDGER_BASE__ : '/';
+  const base = runtimeBaseUrl();
   return `${base}${path.replace(/^\/+/, '')}`;
 }
 

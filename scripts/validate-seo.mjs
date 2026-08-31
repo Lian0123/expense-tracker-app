@@ -30,10 +30,20 @@ for (const needle of [
 }
 const app = await readFile('dist/app/index.html', 'utf8');
 if (!app.includes('noindex,nofollow')) throw new Error('App entry must be noindex');
+if (!html.includes('src="./assets/') || !html.includes('href="./manifest.webmanifest"'))
+  throw new Error('Landing HTML must use portable relative asset paths');
+if (!app.includes('src="../assets/') || !app.includes('href="../manifest.webmanifest"'))
+  throw new Error('App HTML must use portable parent-relative asset paths');
+if (!html.includes('href="./manifest.webmanifest"'))
+  throw new Error('Landing manifest link must resolve relative to the Pages root');
+if (!app.includes('href="../manifest.webmanifest"'))
+  throw new Error('App manifest link must resolve one level up to the Pages root');
 const sitemap = await readFile('dist/sitemap.xml', 'utf8');
 if (sitemap.includes('/app/'))
   throw new Error('Sitemap must not include the personalized app shell');
 for (const artifact of [html, english, app]) {
+  if (artifact.includes('%BASE_URL%') || artifact.includes('src/main.tsx'))
+    throw new Error('Production HTML contains an unbuilt source/base placeholder');
   if (artifact.includes('daily-ledger.example'))
     throw new Error('SEO artifact contains placeholder domain');
   const ogImage = artifact.match(/property="og:image" content="([^"]+)"/u)?.[1];

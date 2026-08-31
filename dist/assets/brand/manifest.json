@@ -1,0 +1,21 @@
+{
+  "name": "hana-app-icon",
+  "source": "ImageGen logo-brand workflow using hana-welcome identity reference",
+  "purpose": "PWA install icon and favicon",
+  "variants": [
+    {
+      "file": "hana-app-icon-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "alpha": false
+    },
+    {
+      "file": "hana-app-icon-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "alpha": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "formats": ["avif", "webp", "png"],
+  "scenes": ["morning", "noon", "dusk", "evening", "deep-night"],
+  "pathTemplate": "/assets/backgrounds/shrine-{scene}.{avif|webp|png}",
+  "assetMap": { "evening": "shrine-night.png", "deep-night": "shrine-late-night.png" },
+  "fallback": "css-gradient"
+}
