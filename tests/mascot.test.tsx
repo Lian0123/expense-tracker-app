@@ -13,4 +13,15 @@ describe('Hana motion state contract', () => {
       );
     },
   );
+
+  it('supports the Mugi corgi companion asset family', () => {
+    const { container } = render(
+      <Mascot locale="zh-TW" event="income" scene="noon" character="mugi" />,
+    );
+    expect(container.querySelector('.mascot--mugi')).toBeTruthy();
+    expect(container.querySelector('[role="img"]')).toHaveAttribute('aria-label', '中午的麥麥');
+    expect(container.querySelector('img')?.getAttribute('src')).toMatch(
+      /\/assets\/characters\/mugi-corgi-happy\.png/,
+    );
+  });
 });

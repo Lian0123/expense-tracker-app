@@ -2,6 +2,7 @@ import {
   assetImageSet,
   assetUrl,
   assetVariant,
+  mascotAssetFor,
   mascotAsset,
   resolveRuntimeBase,
   sceneAsset,
@@ -29,6 +30,8 @@ describe('asset manifest', () => {
   it('references the generated transparent character and scene assets', () => {
     expect(mascotAsset.income).toBe('assets/characters/hana-income.png');
     expect(sceneAsset['deep-night']).toBe('assets/backgrounds/shrine-late-night.png');
+    expect(mascotAssetFor('mugi', 'income')).toBe('assets/characters/mugi-corgi-happy.png');
+    expect(mascotAssetFor('mugi', 'thinking')).toBe('assets/characters/mugi-corgi-thinking.png');
   });
 
   it('builds modern image candidates while retaining the PNG fallback', () => {

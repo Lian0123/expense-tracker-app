@@ -72,6 +72,12 @@ describe('strict schema dates and boundaries', () => {
     expect(() => validateSettings({ ...settings, sortMode: 'random' })).toThrow(
       'Invalid sort mode',
     );
+    expect(validateSettings({ ...settings, mascotCharacter: 'mugi' })).toMatchObject({
+      mascotCharacter: 'mugi',
+    });
+    expect(() => validateSettings({ ...settings, mascotCharacter: 'cat' })).toThrow(
+      'Invalid mascot character',
+    );
     expect(() =>
       validateSettings({
         locale: 'en',
