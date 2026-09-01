@@ -27,9 +27,9 @@
       "id": "mugi",
       "name": "Mugi",
       "nameZh": "麥麥柯基",
-      "style": "natural quadrupedal corgi",
+      "style": "Japanese anime quadrupedal corgi",
       "sharedSource": "mugi-corgi.png",
-      "notes": "All event aliases use the natural four-legged base; CSS choreography supplies motion without humanoid poses.",
+      "notes": "A clean 2D Japanese anime companion with ink linework, flat cel shading and a summer mint floral bandana. All event aliases keep a natural four-legged corgi anatomy; CSS choreography supplies motion without humanoid poses.",
       "states": [
         "idle",
         "welcome",
@@ -67,7 +67,7 @@
       "nameZh": "米米三花貓",
       "style": "Japanese mi-ke calico cat",
       "sharedSource": "mimi-cat.png",
-      "notes": "A friendly Japanese mi-ke (三毛猫) companion with a naturally short bobtail, red-and-white kumihimo cord collar and tiny gold bell; three transparent four-legged poses share one identity while CSS choreography supplies motion.",
+      "notes": "A clean 2D Japanese anime mi-ke (三毛猫) companion with a naturally short bobtail, red-and-white kumihimo cord collar and tiny gold bell; transparent four-legged poses share one identity while CSS choreography supplies motion.",
       "states": [
         "idle",
         "welcome",

@@ -1,6 +1,6 @@
 // finalize-pages.mjs stamps a new cache name for every production build so a
 // changed hashed app shell cannot be hidden behind a stale cache.
-const CACHE = 'daily-ledger-shell-1788273873618';
+const CACHE = 'daily-ledger-shell-1788277962306';
 const CHARACTER_STATES = [
   'idle',
   'welcome',
