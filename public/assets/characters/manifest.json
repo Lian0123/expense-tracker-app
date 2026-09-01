@@ -27,6 +27,9 @@
       "id": "mugi",
       "name": "Mugi",
       "nameZh": "麥麥柯基",
+      "style": "natural quadrupedal corgi",
+      "sharedSource": "mugi-corgi.png",
+      "notes": "All event aliases use the natural four-legged base; CSS choreography supplies motion without humanoid poses.",
       "states": [
         "idle",
         "welcome",
