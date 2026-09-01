@@ -96,10 +96,15 @@ export function LandingPage({ locale, onLocale }: Props) {
           </div>
           <div className="visual-flower flower-a">✿</div>
           <div className="visual-flower flower-b">✿</div>
-          <div className="visual-companions" aria-label={isZh ? '花水木與麥麥' : 'Hana and Mugi'}>
+          <div
+            className="visual-companions"
+            aria-label={isZh ? '花水木、麥麥與米米' : 'Hana, Mugi and Mimi'}
+          >
             <span>✿ {isZh ? '花水木' : 'Hana'}</span>
             <b aria-hidden="true">×</b>
             <span>🐾 {isZh ? '麥麥' : 'Mugi'}</span>
+            <b aria-hidden="true">×</b>
+            <span>🐱 {isZh ? '米米' : 'Mimi'}</span>
           </div>
           <div className="visual-caption">{isZh ? '花水木在這裡' : 'Hana is here'}</div>
         </div>

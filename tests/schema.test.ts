@@ -75,6 +75,9 @@ describe('strict schema dates and boundaries', () => {
     expect(validateSettings({ ...settings, mascotCharacter: 'mugi' })).toMatchObject({
       mascotCharacter: 'mugi',
     });
+    expect(validateSettings({ ...settings, mascotCharacter: 'mimi' })).toMatchObject({
+      mascotCharacter: 'mimi',
+    });
     expect(() => validateSettings({ ...settings, mascotCharacter: 'cat' })).toThrow(
       'Invalid mascot character',
     );

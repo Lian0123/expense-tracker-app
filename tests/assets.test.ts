@@ -32,6 +32,8 @@ describe('asset manifest', () => {
     expect(sceneAsset['deep-night']).toBe('assets/backgrounds/shrine-late-night.png');
     expect(mascotAssetFor('mugi', 'income')).toBe('assets/characters/mugi-corgi-happy.png');
     expect(mascotAssetFor('mugi', 'thinking')).toBe('assets/characters/mugi-corgi-thinking.png');
+    expect(mascotAssetFor('mimi', 'income')).toBe('assets/characters/mimi-cat-happy.png');
+    expect(mascotAssetFor('mimi', 'thinking')).toBe('assets/characters/mimi-cat-thinking.png');
   });
 
   it('builds modern image candidates while retaining the PNG fallback', () => {

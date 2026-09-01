@@ -3,7 +3,7 @@ export type SortMode = 'newest' | 'oldest' | 'amount-high' | 'amount-low' | 'upd
 export type Locale = 'zh-TW' | 'en';
 export type TimeScene = 'morning' | 'noon' | 'dusk' | 'evening' | 'deep-night';
 export type MascotPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-export type MascotCharacter = 'hana' | 'mugi';
+export type MascotCharacter = 'hana' | 'mugi' | 'mimi';
 export type MascotEvent =
   | 'welcome'
   | 'idle'

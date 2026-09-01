@@ -24,4 +24,15 @@ describe('Hana motion state contract', () => {
       /\/assets\/characters\/mugi-corgi-happy\.png/,
     );
   });
+
+  it('supports the Mimi calico cat companion asset family', () => {
+    const { container } = render(
+      <Mascot locale="zh-TW" event="income" scene="noon" character="mimi" />,
+    );
+    expect(container.querySelector('.mascot--mimi')).toBeTruthy();
+    expect(container.querySelector('[role="img"]')).toHaveAttribute('aria-label', '中午的米米');
+    expect(container.querySelector('img')?.getAttribute('src')).toMatch(
+      /\/assets\/characters\/mimi-cat-happy\.png/,
+    );
+  });
 });

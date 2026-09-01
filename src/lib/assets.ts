@@ -84,8 +84,26 @@ export const mugiMascotAsset: Record<string, string> = {
   warning: 'assets/characters/mugi-corgi-thinking.png',
 };
 
+/** Mimi is a calico cat with three expressive source poses; CSS choreography
+ * fills in the in-between motion for every ledger event. */
+export const mimiMascotAsset: Record<string, string> = {
+  idle: 'assets/characters/mimi-cat.png',
+  welcome: 'assets/characters/mimi-cat-happy.png',
+  focus: 'assets/characters/mimi-cat-thinking.png',
+  thinking: 'assets/characters/mimi-cat-thinking.png',
+  income: 'assets/characters/mimi-cat-happy.png',
+  expense: 'assets/characters/mimi-cat.png',
+  edit: 'assets/characters/mimi-cat-thinking.png',
+  validation: 'assets/characters/mimi-cat-thinking.png',
+  empty: 'assets/characters/mimi-cat.png',
+  success: 'assets/characters/mimi-cat-happy.png',
+  export: 'assets/characters/mimi-cat-happy.png',
+  warning: 'assets/characters/mimi-cat-thinking.png',
+};
+
 export function mascotAssetFor(character: MascotCharacter = 'hana', state: string): string {
-  const source = character === 'mugi' ? mugiMascotAsset : mascotAsset;
+  const source =
+    character === 'mugi' ? mugiMascotAsset : character === 'mimi' ? mimiMascotAsset : mascotAsset;
   return source[state] ?? source.idle;
 }
 

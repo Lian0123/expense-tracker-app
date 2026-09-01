@@ -16,7 +16,16 @@ interface Props {
 export function Mascot({ locale, event, scene, compact = false, character = 'hana' }: Props) {
   const state = mascotState(event);
   const characterAsset = mascotAssetFor(character, state);
-  const characterName = character === 'mugi' ? (locale === 'zh-TW' ? '麥麥' : 'Mugi') : '花水木';
+  const characterName =
+    character === 'mugi'
+      ? locale === 'zh-TW'
+        ? '麥麥'
+        : 'Mugi'
+      : character === 'mimi'
+        ? locale === 'zh-TW'
+          ? '米米'
+          : 'Mimi'
+        : '花水木';
   const [hovered, setHovered] = useState(false);
   const [pinned, setPinned] = useState(false);
   const engaged = hovered || pinned;

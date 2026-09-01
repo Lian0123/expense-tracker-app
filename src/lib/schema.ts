@@ -88,7 +88,7 @@ export function validateSettings(value: unknown): UserSettingsV1 {
   if (!['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(mascotPosition))
     throw new Error('Invalid mascot position');
   const mascotCharacter = item.mascotCharacter;
-  if (mascotCharacter !== undefined && !['hana', 'mugi'].includes(mascotCharacter))
+  if (mascotCharacter !== undefined && !['hana', 'mugi', 'mimi'].includes(mascotCharacter))
     throw new Error('Invalid mascot character');
   const sortMode = item.sortMode;
   if (

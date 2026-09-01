@@ -1406,6 +1406,12 @@ h2 {
 .mascot--mugi .mascot__scene {
   color: #bd704f;
 }
+.mascot--mimi .mascot__art img {
+  filter: drop-shadow(0 10px 13px rgba(83, 71, 67, 0.2)) saturate(1.1) contrast(1.03);
+}
+.mascot--mimi .mascot__scene {
+  color: #9d6b5b;
+}
 .reduce-motion *,
 .reduce-motion *::before,
 .reduce-motion *::after {

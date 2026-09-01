@@ -79,6 +79,7 @@ export function AppShell({
   const characterLabels: Record<MascotCharacter, string> = {
     hana: locale === 'zh-TW' ? '花水木' : 'Hana',
     mugi: locale === 'zh-TW' ? '麥麥柯基' : 'Mugi corgi',
+    mimi: locale === 'zh-TW' ? '米米三花貓' : 'Mimi calico cat',
   };
   const positionLabels: Record<MascotPosition, string> = {
     'top-left': t(locale, 'cornerTopLeft'),
@@ -180,6 +181,7 @@ export function AppShell({
               >
                 <option value="hana">{characterLabels.hana}</option>
                 <option value="mugi">{characterLabels.mugi}</option>
+                <option value="mimi">{characterLabels.mimi}</option>
               </select>
             </label>
             <select
@@ -289,6 +291,7 @@ export function AppShell({
             >
               <option value="hana">{characterLabels.hana}</option>
               <option value="mugi">{characterLabels.mugi}</option>
+              <option value="mimi">{characterLabels.mimi}</option>
             </select>
           </label>
           <fieldset className="mascot-position-picker">
