@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type {
   Locale,
+  MascotCharacter,
   MascotEvent,
   MascotPosition,
   TimeScene,
@@ -74,6 +75,11 @@ export function AppShell({
     window.history.replaceState({}, '', `${window.location.pathname}?mode=${next}`);
   };
   const mobilePosition = settings.mascotPosition ?? 'bottom-right';
+  const mascotCharacter = settings.mascotCharacter ?? 'hana';
+  const characterLabels: Record<MascotCharacter, string> = {
+    hana: locale === 'zh-TW' ? '花水木' : 'Hana',
+    mugi: locale === 'zh-TW' ? '麥麥柯基' : 'Mugi corgi',
+  };
   const positionLabels: Record<MascotPosition, string> = {
     'top-left': t(locale, 'cornerTopLeft'),
     'top-right': t(locale, 'cornerTopRight'),
@@ -158,6 +164,24 @@ export function AppShell({
             {locale === 'zh-TW' ? sceneMeta[scene].label : sceneMeta[scene].en}
           </div>
           <div className="topbar-actions">
+            <label className="character-control" htmlFor="character-select">
+              <span>{t(locale, 'character')}</span>
+              <select
+                className="character-select"
+                id="character-select"
+                value={mascotCharacter}
+                aria-label={t(locale, 'character')}
+                onChange={(event) =>
+                  onSettings({
+                    ...settings,
+                    mascotCharacter: event.target.value as MascotCharacter,
+                  })
+                }
+              >
+                <option value="hana">{characterLabels.hana}</option>
+                <option value="mugi">{characterLabels.mugi}</option>
+              </select>
+            </label>
             <select
               className="scene-select"
               value={settings.sceneOverride}
@@ -230,10 +254,10 @@ export function AppShell({
         <div className="app-content">{children}</div>
       </main>
       <div className="app-companion">
-        <Mascot locale={locale} event={event} scene={scene} />
+        <Mascot locale={locale} event={event} scene={scene} character={mascotCharacter} />
       </div>
       <div className={`mobile-mascot-preview mobile-mascot-preview--${mobilePosition}`}>
-        <Mascot locale={locale} event={event} scene={scene} compact />
+        <Mascot locale={locale} event={event} scene={scene} compact character={mascotCharacter} />
         <button
           className="mobile-mascot-toggle"
           aria-expanded={mobileMascotOpen}
@@ -249,7 +273,24 @@ export function AppShell({
           role="dialog"
           aria-label={t(locale, 'companion')}
         >
-          <Mascot locale={locale} event={event} scene={scene} />
+          <Mascot locale={locale} event={event} scene={scene} character={mascotCharacter} />
+          <label className="mascot-character-picker" htmlFor="mobile-character-select">
+            <span>{t(locale, 'character')}</span>
+            <select
+              value={mascotCharacter}
+              id="mobile-character-select"
+              aria-label={t(locale, 'character')}
+              onChange={(event) =>
+                onSettings({
+                  ...settings,
+                  mascotCharacter: event.target.value as MascotCharacter,
+                })
+              }
+            >
+              <option value="hana">{characterLabels.hana}</option>
+              <option value="mugi">{characterLabels.mugi}</option>
+            </select>
+          </label>
           <fieldset className="mascot-position-picker">
             <legend>{t(locale, 'moveMascot')}</legend>
             <div className="mascot-position-picker__grid">

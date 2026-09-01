@@ -1,3 +1,5 @@
+import type { MascotCharacter } from '../types/domain';
+
 /**
  * Resolve the effective deployment root at runtime.
  *
@@ -64,6 +66,28 @@ export const mascotAsset: Record<string, string> = {
   export: 'assets/characters/hana-export.png',
   warning: 'assets/characters/hana-warning.png',
 };
+
+/** Mugi uses a small curated set of expressive poses and the CSS choreography
+ * fills in the in-between motion for every ledger event. */
+export const mugiMascotAsset: Record<string, string> = {
+  idle: 'assets/characters/mugi-corgi.png',
+  welcome: 'assets/characters/mugi-corgi-happy.png',
+  focus: 'assets/characters/mugi-corgi-thinking.png',
+  thinking: 'assets/characters/mugi-corgi-thinking.png',
+  income: 'assets/characters/mugi-corgi-happy.png',
+  expense: 'assets/characters/mugi-corgi.png',
+  edit: 'assets/characters/mugi-corgi-thinking.png',
+  validation: 'assets/characters/mugi-corgi-thinking.png',
+  empty: 'assets/characters/mugi-corgi.png',
+  success: 'assets/characters/mugi-corgi-happy.png',
+  export: 'assets/characters/mugi-corgi-happy.png',
+  warning: 'assets/characters/mugi-corgi-thinking.png',
+};
+
+export function mascotAssetFor(character: MascotCharacter = 'hana', state: string): string {
+  const source = character === 'mugi' ? mugiMascotAsset : mascotAsset;
+  return source[state] ?? source.idle;
+}
 
 export const sceneAsset: Record<string, string> = {
   morning: 'assets/backgrounds/shrine-morning.png',

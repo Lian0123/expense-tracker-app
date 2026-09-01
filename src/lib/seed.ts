@@ -105,5 +105,6 @@ export const defaultSettings: UserSettingsV1 = {
   sceneOverride: 'auto',
   reducedMotion: false,
   mascotPosition: 'bottom-right',
+  mascotCharacter: 'hana',
   sortMode: 'newest',
 };

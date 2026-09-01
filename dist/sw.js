@@ -1,6 +1,6 @@
 // finalize-pages.mjs stamps a new cache name for every production build so a
 // changed hashed app shell cannot be hidden behind a stale cache.
-const CACHE = 'daily-ledger-shell-1788197746273';
+const CACHE = 'daily-ledger-shell-1788227539723';
 const CHARACTER_STATES = [
   'idle',
   'welcome',
@@ -15,6 +15,7 @@ const CHARACTER_STATES = [
   'export',
   'warning',
 ];
+const MUGI_ASSETS = ['mugi-corgi', 'mugi-corgi-thinking', 'mugi-corgi-happy'];
 const SCENES = ['morning', 'noon', 'dusk', 'night', 'late-night'];
 const IMAGE_FORMATS = ['avif', 'webp', 'png'];
 const CORE = [
@@ -30,6 +31,9 @@ const CORE = [
   './assets/brand/hana-app-icon-512.png',
   ...CHARACTER_STATES.flatMap((state) =>
     IMAGE_FORMATS.map((format) => `./assets/characters/hana-${state}.${format}`),
+  ),
+  ...MUGI_ASSETS.flatMap((asset) =>
+    IMAGE_FORMATS.map((format) => `./assets/characters/${asset}.${format}`),
   ),
   ...SCENES.flatMap((scene) =>
     IMAGE_FORMATS.map((format) => `./assets/backgrounds/shrine-${scene}.${format}`),

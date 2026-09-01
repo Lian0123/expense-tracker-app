@@ -21,5 +21,42 @@
     "validation": "hana-error.png",
     "success": "hana-import.png"
   },
-  "fallback": "none"
+  "fallback": "none",
+  "additionalCharacters": [
+    {
+      "id": "mugi",
+      "name": "Mugi",
+      "nameZh": "麥麥柯基",
+      "states": [
+        "idle",
+        "welcome",
+        "focus",
+        "thinking",
+        "income",
+        "expense",
+        "edit",
+        "validation",
+        "empty",
+        "success",
+        "export",
+        "warning"
+      ],
+      "assetMap": {
+        "idle": "mugi-corgi.png",
+        "welcome": "mugi-corgi-happy.png",
+        "focus": "mugi-corgi-thinking.png",
+        "thinking": "mugi-corgi-thinking.png",
+        "income": "mugi-corgi-happy.png",
+        "expense": "mugi-corgi.png",
+        "edit": "mugi-corgi-thinking.png",
+        "validation": "mugi-corgi-thinking.png",
+        "empty": "mugi-corgi.png",
+        "success": "mugi-corgi-happy.png",
+        "export": "mugi-corgi-happy.png",
+        "warning": "mugi-corgi-thinking.png"
+      },
+      "pathTemplate": "/assets/characters/{asset}.{avif|webp|png}",
+      "fallback": "mugi-corgi.png"
+    }
+  ]
 }

@@ -28,6 +28,7 @@ export function useLedger() {
       sceneOverride: 'auto',
       reducedMotion: false,
       mascotPosition: 'bottom-right',
+      mascotCharacter: 'hana',
       sortMode: 'newest',
     },
   });

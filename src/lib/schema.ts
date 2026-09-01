@@ -1,6 +1,7 @@
 import type {
   BackupEnvelopeV1,
   CategoryV1,
+  MascotCharacter,
   SortMode,
   TransactionV1,
   UserSettingsV1,
@@ -86,6 +87,9 @@ export function validateSettings(value: unknown): UserSettingsV1 {
   const mascotPosition = item.mascotPosition ?? 'bottom-right';
   if (!['top-left', 'top-right', 'bottom-left', 'bottom-right'].includes(mascotPosition))
     throw new Error('Invalid mascot position');
+  const mascotCharacter = item.mascotCharacter;
+  if (mascotCharacter !== undefined && !['hana', 'mugi'].includes(mascotCharacter))
+    throw new Error('Invalid mascot character');
   const sortMode = item.sortMode;
   if (
     sortMode !== undefined &&
@@ -97,6 +101,8 @@ export function validateSettings(value: unknown): UserSettingsV1 {
     currency: item.currency.toUpperCase(),
     mascotPosition,
   } as UserSettingsV1;
+  if (mascotCharacter !== undefined)
+    normalized.mascotCharacter = mascotCharacter as MascotCharacter;
   // Keep legacy settings payloads byte-for-byte compatible while exposing a
   // sensible default to the UI through the nullish fallback.
   if (sortMode !== undefined) normalized.sortMode = sortMode as SortMode;

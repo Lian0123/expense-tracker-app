@@ -3,6 +3,7 @@ export type SortMode = 'newest' | 'oldest' | 'amount-high' | 'amount-low' | 'upd
 export type Locale = 'zh-TW' | 'en';
 export type TimeScene = 'morning' | 'noon' | 'dusk' | 'evening' | 'deep-night';
 export type MascotPosition = 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+export type MascotCharacter = 'hana' | 'mugi';
 export type MascotEvent =
   | 'welcome'
   | 'idle'
@@ -48,6 +49,8 @@ export interface UserSettingsV1 {
   reducedMotion: boolean;
   /** Mobile companion anchor; desktop keeps the companion in the side rail. */
   mascotPosition: MascotPosition;
+  /** Companion identity; legacy settings default to Hana. */
+  mascotCharacter?: MascotCharacter;
   /** Preferred ledger ordering, persisted locally so backfilled entries stay easy to find. */
   sortMode?: SortMode;
 }

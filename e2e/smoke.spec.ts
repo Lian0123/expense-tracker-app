@@ -30,6 +30,10 @@ test('records, persists, sorts and creates a custom category', async ({ page }) 
   await page.getByLabel('備註').fill('較小的夏日支出');
   await page.getByRole('button', { name: '儲存記錄' }).click();
   await expect(page.getByText('較小的夏日支出', { exact: true })).toBeVisible();
+  await page.getByRole('combobox', { name: '陪伴角色', exact: true }).selectOption('mugi');
+  await expect(page.locator('.app-companion .mascot')).toHaveClass(/mascot--mugi/);
+  await page.reload();
+  await expect(page.locator('.app-companion .mascot')).toHaveClass(/mascot--mugi/);
   await page.reload();
   await expect(page.getByText('較大的夏日支出', { exact: true })).toBeVisible();
   await expect(page.getByText('較小的夏日支出', { exact: true })).toBeVisible();
@@ -63,6 +67,8 @@ test('keeps animated Hana visible and usable on a 320px phone', async ({ page })
   await page.getByRole('button', { name: '打開花水木對話' }).click();
   const dialog = page.getByRole('dialog', { name: '花水木陪伴' });
   await expect(dialog).toBeVisible();
+  await dialog.getByRole('combobox', { name: '陪伴角色', exact: true }).selectOption('mugi');
+  await expect(page.locator('.mobile-mascot-preview .mascot')).toHaveClass(/mascot--mugi/);
   expect(await dialog.evaluate((node) => getComputedStyle(node).zIndex)).toBe('120');
   expect(
     await dialog.locator('.mascot__art').evaluate((node) => getComputedStyle(node).zIndex),
