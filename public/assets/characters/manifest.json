@@ -65,9 +65,9 @@
       "id": "mimi",
       "name": "Mimi",
       "nameZh": "米米三花貓",
-      "style": "natural calico cat",
+      "style": "Japanese mi-ke calico cat",
       "sharedSource": "mimi-cat.png",
-      "notes": "A friendly four-legged calico companion; three transparent poses share one identity while CSS choreography supplies motion.",
+      "notes": "A friendly Japanese mi-ke (三毛猫) companion with a naturally short bobtail, red-and-white kumihimo cord collar and tiny gold bell; three transparent four-legged poses share one identity while CSS choreography supplies motion.",
       "states": [
         "idle",
         "welcome",

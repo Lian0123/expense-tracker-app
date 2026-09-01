@@ -76,7 +76,7 @@ export const text = {
     languageEn: 'English',
     menu: '選單',
     appearance: '角色與場景',
-    characters: '花水木、麥麥與米米會隨你的操作變換表情。',
+    characters: '花水木、麥麥與米米三花貓會隨你的操作變換表情。',
     exportHint: '備份檔不會離開你的裝置。',
     dateRange: '期間',
     previous: '上一頁',
@@ -223,7 +223,8 @@ export const text = {
     languageEn: 'English',
     menu: 'Menu',
     appearance: 'Character & scene',
-    characters: 'Hana, Mugi and Mimi change expression as you move through your ledger.',
+    characters:
+      'Hana and Mugi, plus Mimi the Japanese calico cat, change expression as you move through your ledger.',
     exportHint: 'Backups never leave your device.',
     dateRange: 'Date range',
     previous: 'Previous',

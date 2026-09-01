@@ -1,6 +1,6 @@
 // finalize-pages.mjs stamps a new cache name for every production build so a
 // changed hashed app shell cannot be hidden behind a stale cache.
-const CACHE = 'daily-ledger-shell-1788272051064';
+const CACHE = 'daily-ledger-shell-1788273873618';
 const CHARACTER_STATES = [
   'idle',
   'welcome',
@@ -62,9 +62,11 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request).then((cached) => {
       if (cached) return cached;
       return fetch(event.request)
-        .then((response) => {
-          const clone = response.clone();
-          void caches.open(CACHE).then((cache) => cache.put(event.request, clone));
+        .then(async (response) => {
+          // Complete the cache write before resolving the fetch. This prevents a
+          // fast offline reload from racing the lazy AppShell chunk's cache put.
+          const cache = await caches.open(CACHE);
+          await cache.put(event.request, response.clone());
           return response;
         })
         .catch(() =>
